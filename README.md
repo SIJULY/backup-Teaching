@@ -30,11 +30,11 @@ ssh-keygen -t ed25519 -C "vps_backup"
 cat /root/.ssh/id_ed25519.pub
 ```
 
-复制输出的内容。
+#### 复制输出的内容。
 
-进入 GitHub 仓库 -> Settings -> Deploy keys -> Add deploy key。
+#### 进入 GitHub 仓库 -> Settings -> Deploy keys -> Add deploy key。
 
-粘贴密钥，并勾选 "Allow write access" (允许写入)，保存。
+#### 粘贴密钥，并勾选 "Allow write access" (允许写入)，保存。
 
 ### 2. 部署备份脚本
 创建脚本文件：
@@ -131,7 +131,7 @@ echo "0 4 * * * /root/sync_to_github.sh >> /var/log/backup.log 2>&1" | crontab -
 此步骤在新购买或重装后的 VPS 上操作。
 
 ### 1. 配置 SSH 密钥
-新机器需要读取权限。
+#### 新机器需要读取权限。
 
 ```bash
 # 生成密钥
@@ -140,18 +140,16 @@ ssh-keygen -t ed25519 -C "new_vps_restore"
 cat /root/.ssh/id_ed25519.pub
 ```
 
-复制内容。
-
-进入 GitHub 仓库 -> Settings -> Deploy keys -> Add deploy key。
-
-粘贴密钥 (恢复数据不需要勾选 "Allow write access")。
+#### 复制内容。
+#### 进入 GitHub 仓库 -> Settings -> Deploy keys -> Add deploy key。
+#### 粘贴密钥 (恢复数据不需要勾选 "Allow write access")。
 
 ### 2. 运行恢复脚本
 创建脚本：
 
-Bash
-
+```bash
 vim /root/restore_from_github.sh
+```
 👇 复制以下内容 (注意修改 REPO_URL)：
 
 ```bash
