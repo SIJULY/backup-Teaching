@@ -28,14 +28,15 @@ ssh-keygen -t ed25519 -C "vps_backup"
 
 # 2. 查看公钥内容
 cat /root/.ssh/id_ed25519.pub
-```bash
+```
+
 复制输出的内容。
 
 进入 GitHub 仓库 -> Settings -> Deploy keys -> Add deploy key。
 
 粘贴密钥，并勾选 "Allow write access" (允许写入)，保存。
 
-2. 部署备份脚本
+### 2. 部署备份脚本
 创建脚本文件：
 
 ```bash
