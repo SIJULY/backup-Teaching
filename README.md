@@ -1,6 +1,6 @@
 # 🚀 VPS 全自动备份与一键恢复指南
 
-本项目用于实现 VPS 服务器数据的全自动定时备份，以及在新服务器上的一键恢复。
+#### 本项目用于实现 VPS 服务器数据的全自动定时备份，以及在新服务器上的一键恢复。
 
 **备份对象：**
 * `cloud_manager` (位于 `/opt/cloud_manager`)
@@ -10,17 +10,17 @@
 
 ## 🛠️ 第一阶段：准备工作 (GitHub)
 
-1.  创建一个 **私有 (Private)** 仓库（建议命名为 `vps-data-backup`）。
-2.  记下仓库的 **SSH 地址**（例如：`git@github.com:your_name/vps-data-backup.git`）。
+#### 1.  创建一个 **私有 (Private)** 仓库（建议命名为 `vps-data-backup`）。
+#### 2.  记下仓库的 **SSH 地址**（例如：`git@github.com:your_name/vps-data-backup.git`）。
 
 ---
 
 ## 📤 第二阶段：旧 VPS 设置 (自动备份)
 
-此步骤在**需要备份数据的源服务器**上操作。
+#### 此步骤在**需要备份数据的源服务器**上操作。
 
 ### 1. 配置 SSH 密钥
-为了让脚本自动上传数据，需要配置 Deploy Key。
+#### 为了让脚本自动上传数据，需要配置 Deploy Key。
 
 ```bash
 # 1. 生成密钥 (一路回车)
@@ -37,7 +37,7 @@ cat /root/.ssh/id_ed25519.pub
 #### 粘贴密钥，并勾选 "Allow write access" (允许写入)，保存。
 
 ### 2. 部署备份脚本
-创建脚本文件：
+#### 创建脚本文件：
 
 ```bash
 vim /root/sync_to_github.sh
@@ -121,14 +121,14 @@ else
 fi
 ```
 ### 3. 设置定时任务
-赋予权限并添加到 Crontab (每天凌晨 4 点运行)：
+#### 赋予权限并添加到 Crontab (每天凌晨 4 点运行)：
 
 ```bash
 chmod +x /root/sync_to_github.sh
 echo "0 4 * * * /root/sync_to_github.sh >> /var/log/backup.log 2>&1" | crontab -
 ```
 ## 📥 第三阶段：新 VPS 设置 (一键恢复)
-此步骤在新购买或重装后的 VPS 上操作。
+#### 此步骤在新购买或重装后的 VPS 上操作。
 
 ### 1. 配置 SSH 密钥
 #### 新机器需要读取权限。
@@ -145,12 +145,12 @@ cat /root/.ssh/id_ed25519.pub
 #### 粘贴密钥 (恢复数据不需要勾选 "Allow write access")。
 
 ### 2. 运行恢复脚本
-创建脚本：
+#### 创建脚本：
 
 ```bash
 vim /root/restore_from_github.sh
 ```
-👇 复制以下内容 (注意修改 REPO_URL)：
+#### 👇 复制以下内容 (注意修改 REPO_URL)：
 
 ```bash
 
@@ -204,7 +204,7 @@ echo "✅ 所有数据已归位！"
 ```
 
 ### 3. 执行恢复与启动
-赋予权限并运行：
+#### 赋予权限并运行：
 
 ```bash
 
@@ -212,7 +212,7 @@ chmod +x /root/restore_from_github.sh
 /root/restore_from_github.sh
 ```
 
-恢复完成后，启动服务：
+#### 恢复完成后，启动服务：
 ```bash
 # 启动 Cloud Manager
 cd /opt/cloud_manager
