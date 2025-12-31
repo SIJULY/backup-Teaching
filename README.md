@@ -2,7 +2,7 @@
 
 #### 本项目用于实现 VPS 服务器数据的全自动定时备份，以及在新服务器上的一键恢复。
 
-**备份对象：**
+**举例备份对象：**
 * `cloud_manager` (位于 `/opt/cloud_manager`)
 * `xui_manager` (位于 `/root/xui_manager`)
 
